@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Story Slider</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="slides">
+        <div class="slide_indicator">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="slide_wrapper active">
+            <div class="slide">
+                <div class="slide_image_wrapper">
+                    <img src="./images/slide1.webp" alt="">
+                </div>
+                <div class="slide_text">
+                    <h2>What do you know about czeck art?</h2>
+                    <p>An ABC of the czeck Republics cultural scence</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide_wrapper">
+            <div class="slide">
+                <div class="slide_image_wrapper">
+                    <img src="./images/slide2.webp" alt="">
+                </div>
+                <div class="slide_text">
+                    <h2>What do you know about czeck art?</h2>
+                    <p>An ABC of the czeck Republics cultural scence</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide_wrapper">
+            <div class="slide">
+                <div class="slide_image_wrapper">
+                    <img src="./images/slide3.webp" alt="">
+                </div>
+                <div class="slide_text">
+                    <h2>What do you know about czeck art?</h2>
+                    <p>An ABC of the czeck Republics cultural scence</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide_wrapper">
+            <div class="slide">
+                <div class="slide_image_wrapper">
+                    <img src="./images/slide4.webp" alt="">
+                </div>
+                <div class="slide_text">
+                    <h2>What do you know about czeck art?</h2>
+                    <p>An ABC of the czeck Republics cultural scence</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const slides = document.querySelector(".slides"),
+            slideWrappers = document.querySelectorAll('.slide_wrapper'),
+            slideIndicator = document.querySelectorAll(".slide_indicator span");
+
+        slideWrappers.forEach((slideWrapper, index) => {
+            slideWrapper.addEventListener("click", (event) => {
+                document.querySelector(".slide_wrapper.active").classList.remove("active");
+                document.querySelector(".slide_indicator span.active").classList.remove("active");
+
+                if (event.offsetX > slides.clientWidth / 2) {
+                    if (index < slideWrappers.length - 1) {
+                        slideWrappers[index + 1].classList.add("active");
+                        slideIndicator[index + 1].classList.add("active");
+                    }
+                    else {
+                        slideWrappers[index].classList.add("active");
+                        slideIndicator[index].classList.add("active");
+                    }
+                }
+                else {
+                    if (index > 0) {
+                        slideWrappers[index - 1].classList.add("active")
+                        slideIndicator[index - 1].classList.add("active");
+                    }
+                    else {
+                        slideWrappers[index].classList.add("active");
+                        slideIndicator[index].classList.add("active");
+                    }
+                }
+
+            });
+        });
+    </script>
+</body>
+
+</html>
